@@ -1,0 +1,26 @@
+
+<table id="customers">
+  <tr>
+    <th>Name</th>
+    <th>Phone Number</th>
+    <th>Country</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let user of users;let i=index;">
+    <td>{{user.name}}</td>
+    <td>{{user.phone}}</td>
+    <td>{{user.country}}</td>
+    <td><button (click)="viewDetails(user)" class="button-view">View</button></td>
+    <td><button (click)="deleteUser(user,i)" class="button-delete">Delete</button></td>
+  </tr>
+</table>
+
+<button (click)="showAddUser()" class="button-view">Add User</button>
+<div *ngIf="showDetails">
+<app-user-details [userDetails]="userDetails" (hide)="hideDetails($event)"></app-user-details>
+ 
+</div>
+<div *ngIf="showAddUserForm">
+    <app-adduser-form (addUser)="addUser($event)"></app-adduser-form> 
+</div>
